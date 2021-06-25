@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Travel</title>
+</head>
+
+<body
+    style="background-image: url(https://lh3.googleusercontent.com/pw/ACtC-3eup_UkUh9aUAfDfDSm1fi7cA21Smudqq_jyBkFLglGoWwQ27mNNi22YGinCXhqOUOOZPq7FZe-Yzh902soXQXjCbDqVBa-ODAji4Ri1hp8FOay3a4wrMYhNiSjX9HUcCpm9k5_juK19ryBU5LbrQ=s1564-no?authuser=0);">
+    <style>
+        .inp {
+            font-style: italic;
+        }
+
+        .textbox {
+            background-color: mediumaquamarine;
+            background-size: 300px 1080px;
+        }
+
+        .display_img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        .name {
+            color: rgb(97, 53, 12);
+            font-size: 200%;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .intro {
+            color: maroon;
+            font-size: 250%;
+            text-align: center;
+            font-weight: bold;
+            font-family: cursive;
+            border: firebrick;
+            border-style: ridge;
+            border-width: 8px;
+        }
+
+        .flight {
+            color: rgb(117, 3, 75);
+            font-size: 250%;
+            text-align: center;
+            font-family: 'monospace';
+        }
+
+        .season {
+            color: maroon;
+            font-size: 150%;
+            text-align: center;
+            font-family: 'Verdana';
+        }
+
+        .info {
+            color: rgb(97, 53, 12);
+            font-size: 150%;
+            text-align: center;
+        }
+    </style>
+    <script>
+
+        function validate() {                                           //Function to make name, country and month mandatory to fill in
+            var fname = document.getElementById("fn").value;
+            var regex = /^[A-Za-z\s\'\-]{2,20}$/;
+            check1();                                                   //functions for checking validity of name, country and month names
+            check2();
+            check3();
+            if (!regex.test(fname)) {
+                return;
+            }
+            var coun = document.getElementById("country").value;
+            var regex2 = /^[A-Za-z\s\'\-]{2,20}$/;
+            if (!regex2.test(coun)) {
+                return;
+            }
+            var mont = document.getElementById("month").value;
+            var regex3 = /^[A-Za-z]{3,9}$/;
+            if (!regex3.test(mont)) {
+                return;
+            }
+            display();                                                  //function to display places to visit
+            display_food();                                             //function to display places to eat
+        }
+
+        function check1() {                                             //function to validate 'name' according to the regular expression
+            var fname = document.getElementById("fn").value;
+            var regex = /^[A-Za-z\s\'\-]{2,20}$/;
+            if (regex.test(fname)) {
+                document.getElementById("temp").innerHTML = "Valid";    //prints valid if name entered matches regex else invalid
+                document.getElementById("temp").style.color = "green";
+            }
+            else {
+                document.getElementById("temp").innerHTML = "Invalid";
+                document.getElementById("temp").style.color = "red";
+            }
+        }
+        function check2() {                                             //function to validate 'country' according to the regular expression            
+            var coun = document.getElementById("country").value;
+            var regex2 = /^[A-Za-z\s\'\-]{2,20}$/;
+            if (regex2.test(coun)) {
+                document.getElementById("temp2").innerHTML = "Valid";   //prints valid if name entered matches regex else invalid
+                document.getElementById("temp2").style.color = "green";
+            }
+            else {
+                document.getElementById("temp2").innerHTML = "Invalid";
+                document.getElementById("temp2").style.color = "red";
+            }
+        }
+        function check3() {                                             //function to validate 'month' according to the regular expression
+            var mont = document.getElementById("month").value;
+            var regex3 = /^[A-Za-z]{3,9}$/;
+            if (regex3.test(mont)) {
+                document.getElementById("temp3").innerHTML = "Valid";   //prints valid if name entered matches regex else invalid
+                document.getElementById("temp3").style.color = "green";
+            }
+            else {
+                document.getElementById("temp3").innerHTML = "Invalid";
+                document.getElementById("temp3").style.color = "red";
+            }
+        }
+        function display() {                                            //function to display places to visit, season etc. according to choices
+            var intro = document.getElementById('fn').value;
+            document.getElementById('intropara').innerHTML = "Hy travel enthusiast " + intro + ". Welcome to our site! Enjoy your virtual tour among the various monuments, museums and shopping complexes in the various countries. ";
+
+
+            if (document.getElementById('italy').checked) {
+                document.getElementById("coun_check").innerHTML = "<strong>ITALY </strong>";
+                var countr = document.getElementById('country').value;
+                var month = document.getElementById('month').value;
+                var link = "<a href = 'https://www.yatra.com/international-flights/flights-to-italy'> this website.</a>"
+                document.getElementById('flight').innerHTML = "So, you live in " + countr + ". It is a beautiful country indeed. For planning your trip to Italy you can visit " + link + " !"
+
+                if (month.toLowerCase() == "march" || month.toLowerCase() == "april" || month.toLowerCase() == "may") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> spring collection</strong> travellor as Italy faces temperatures between <strong> 5 - 25°C </strong> in " + month + " and it is <strong>pleasant and breezy</strong> out there. The Spring season covers the <strong>shoulder season of Italy</strong> and thus, travelling is considerably <strong>cheaper</strong> when compared with other seasons. Spring brings with it blossoming flowers and pleasant weather conditions, which is why it is a great time to travel if you are planning a relaxing vacation."
+                }
+                else if (month.toLowerCase() == "june" || month.toLowerCase() == "july" || month.toLowerCase() == "august") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> summer collection</strong> travellor as Italy faces temperatures between <strong> 18-38°C </strong> in " + month + " and it is <strong>hot and humid</strong> out there. Even though it can get a bit hot in this month, the summer season sees the maximum number of tourists because of the incredible festivals and carnivals that happen during this time of the year. Bask in the sun while spending some quality time at various beaches like Sardinia, Amalfi or Rimini. "
+                }
+                else if (month.toLowerCase() == "september" || month.toLowerCase() == "october" || month.toLowerCase() == "november") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> autumn collection</strong> travellor as Italy faces temperatures between <strong> 8-28°C </strong> in " + month + " and it is <strong>pleasant and rainy</strong> out there. This time of the year becomes the second part of the shoulder season in Italy. It is the season that brings a mix of rain, sun, and snow with a lot of unpredictability. This is ideal for someone who wants to experience a bit of everything in their first visit. Also, the accommodation is much cheaper during this period."
+                }
+                else if (month.toLowerCase() == "december" || month.toLowerCase() == "january" || month.toLowerCase() == "february") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> winter collection</strong> travellor as Italy faces temperatures between <strong> -5-15°C </strong> in " + month + " and it is <strong>dry and cold</strong> out there. If you are into skiing or any winter sports, then you will absolutely love this time of the year. Explore the snow-capped mountains to the fullest! "
+                }
+                else {
+                    document.getElementById('season').innerHTML = "You have entered " + month + " which is not a valid month name."
+                }
+
+                if (document.getElementById('monu').checked) {              //if 'historical monuments' is chosen
+                    var type = "Historical Monuments"
+
+                    document.getElementById("type").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://cdn.britannica.com/63/153463-050-06B6270D/Grand-Canal-Venice.jpg'><br><br> ";
+                    var name = "<div class = 'name'> Grand Canal, Venice </div><br>";
+                    var info = "<div class = 'info'> One of the most famous waterways in the whole world, the Grand Canal likely follows the course of an ancient river which flowed into the Venetian Lagoon. There are now more than 170 buildings flanking each side of the canal, mainly from the 13th to the 18th century. </div><br>";
+
+                    var image1 = "<img class = 'display_img' src = 'https://www.geoengineer.org/storage/news/2020/featured_image/370/77b4cce0b69b99bdd89ed5fe2f72704d_XL.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> The Leaning Tower of Pisa </div><br>";
+                    var info1 = "<div class = 'info'> Certainly Italy’s best known tower, this medieval bell tower captivates the imagination. Found in the Field of Miracles next to Pisa’s cathedral, made of white marble of nearby hills, the 186 foot tower has almost 300 steps. Contemporary restructuring works have ensured that the tower won’t topple over. </div><br>";
+
+                    var image2 = "<img class = 'display_img' src = 'http://jermaineholtz.weebly.com/uploads/4/7/2/1/47215409/3875582.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> The Colosseum, Rome </div><br>";
+                    var info2 = "<div class = 'info'> Completed in 80 AD, this expansive amphitheatre could hold more than 50,000 spectators and was the largest constructed by the Romans. Used for gladiator battles and games, its opening was celebrated with one hundred days of games and was even filled with water for recreations of maritime battles. </div><br>";
+
+                    var image3 = "<img class = 'display_img' src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/20190406-DSC5193_Panteon.jpg/1200px-20190406-DSC5193_Panteon.jpg'><br><br> ";
+                    var name3 = "<div class = 'name'> The Pantheon, Rome </div><br>";
+                    var info3 = "<div class = 'info'> Considered the best preserved Roman building was finished under the reign of Hadrian in around 126 AD. The 142 foot circular structure has a portico of granite Corinthian columns atop which is a pediment and what is still the world’s largest reinforced concrete dome. </div><br>";
+
+                    var image4 = "<img class = 'display_img' src = 'https://www.icirnigeria.org/wp-content/uploads/2018/08/xvatican_stpeters2.jpg.pagespeed.ic_.tI-6rxoUYV.jpg'><br><br> ";
+                    var name4 = "<div class = 'name'> Saint Peter’s Basilica, Vatican City, Rome </div><br>";
+                    var info4 = "<div class = 'info'> One of the greatest achievements of the Renaissance and designed by several of the most talented architects of all time, Saint Peter’s is the largest church in the world. In the Papal enclave of the Vatican City,  the current church replaced a previous one which stood here what is considered to be the place where Saint Peter was buried. </div><br>";
+                    document.getElementById("content").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2 + name3 + info3 + image3 + name4 + info4 + image4;
+                }
+                else if (document.getElementById('mus').checked) {              //if 'museums and art galleries' is chosen
+                    var type = "Museums and Art Galleries"
+                    document.getElementById("type").innerHTML = type;
+
+                    var image = "<img class = 'display_img' src = 'https://www.italianme.it/wp-content/uploads/2019/03/Uffizi-Gallery-of-Florence.jpg'><br><br> ";
+                    var name = "<div class = 'name'> Uffizi Gallery, Florence </div><br>";
+                    var info = "<div class = 'info'> Heralded as one of the best art museums in the world, the Uffizi Gallery in Florence takes you back to a glorious period in art, that of the Renaissance era. Uffizi houses priceless works from Leonardo da Vinci, Fra Angelico, Rembrandt, Michelangelo and other masters. Some of the celebrated masterpieces here include Botticelli's Primavera and The Birth of Venus, Filippo Lippi's Madonna and Child with Two Angels as well as Titian's Venus of Urbino.</div><br>";
+
+                    var image1 = "<img class = 'display_img' src = 'https://www.inexhibit.com/wp-content/uploads/2016/07/Galleria-Borghese-Rome-interior-01.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> The Galleria Borghese, Rome </div><br>";
+                    var info1 = "<div class = 'info'> The Borghese Gallery in Rome is a 17th-century palatial villa that houses an extensive art collection begun by Cardinal Scipione Borghese. Some notable paintings displayed here include Bernini's 1623 self-portrait, Caravaggio's Boy with a Basket of Fruit, St Jerome Writing and Sick Bacchus, Titian's Sacred and Profane Love and Raphael's Entombment of Christ. </div><br>";
+
+                    var image2 = "<img class = 'display_img' src = 'https://www.wantedinrome.com/i/preview/storage/uploads/2018/09/Musei_vaticani_di_Notte.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> Vatican Museums, Vatican City </div><br>";
+                    var info2 = "<div class = 'info'> Founded by Pope Julius II in early 16th century, they showcase coveted artworks collected by the Popes through the centuries, including classical sculptures and significant Renaissance masterpieces. The Vatican Museums are famed for the Sistine Chapel displaying Michelangelo’s ceiling frescoes, the four Raphael Rooms, as well as artworks by Renaissance masters such as Caravaggio, Leonardo da Vinci, Giotto, Lippi and Perugino. </div><br>";
+
+                    var image3 = "<img class = 'display_img' src = 'https://selectitaly.com/blog/wp-content/uploads/2016/06/800px-Mus%C3%A9e_%C3%A9gyptien_Turin_2871342615.jpg'><br><br> ";
+                    var name3 = "<div class = 'name'> Museo Egizio, Turin </div><br>";
+                    var info3 = "<div class = 'info'> With its large collection of Egyptian artifacts, the recently renovated Egyptian Museum of Turin is not only one of the largest museums in Italy, but also one of the largest repositories of Egyptian antiquities in the world, with more than 30,000 items. </div><br>";
+
+                    var image4 = "<img class = 'display_img' src = 'https://www.cityflorence-tours.com/cms/upload/img/prodotto/58/img_588_orig.png'><br><br> ";
+                    var name4 = "<div class = 'name'> Galeria Palatina, Florence </div><br>";
+                    var info4 = "<div class = 'info'> The Palatine Gallery is the main gallery of Palazzo Pitti and consists of 28 sumptuous rooms containing more than 500 paintings, mostly from the Renaissance, part of the private art collection of the Medici dynasty. </div><br>";
+                    document.getElementById("content").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2 + name3 + info3 + image3 + name4 + info4 + image4;
+                }
+                else if (document.getElementById('mall').checked) {                 //if 'shopping complexes and malls' is chosen
+                    var type = "Shopping Complexes and Malls"
+                    document.getElementById("type").innerHTML = type;
+
+                    var image = "<img class = 'display_img' src = 'https://www.we-heart.com/upload-images/themallfirenze1@2x.jpg'><br><br> ";
+                    var name = "<div class = 'name'> The Mall Firenze, Tuscany </div><br>";
+                    var info = "<div class = 'info'> There is a very strong belief at the Mall Firenze that beauty will one day save the world. This is an exclusive luxury outlet located right in the heart of Tuscany. Some of the brands that occupy the mall’s floor space include Versace, Alberta Ferretti, Balenciaga, Billionaire, Bottega Veneta, Versace, and Chopard.</div><br>";
+
+                    var image1 = "<img class = 'display_img' src = 'https://lh3.googleusercontent.com/proxy/Sl3CkJyvH17_pkxfRQZeLgkynKHz3aAwjDlMn7jchrA2Whgu-E2ub2SxdXZFWoKgcrxuSKRkUJGDE1au_yb6-T_8rYWsfBNir9jZzpgu-GBNKSpVcK1X2KM2uN9r7rMXIRkONegVZveE9ug'><br><br> ";
+                    var name1 = "<div class = 'name'> Torri d’Europa, Trieste </div><br>";
+                    var info1 = "<div class = 'info'> Torri d’Europa is a modern, multipurpose shopping complex conveniently located in the beautiful city of Trieste. It has a magnificent glass roof that not only adds to its beauty but also elevates the visit and the shopping experience to a whole new level. </div><br>";
+
+                    var image2 = "<img class = 'display_img' src = 'http://static.trip101.com/paragraph_media/pictures/001/791/173/large/Galleria_vittorio_emanuele__2814133651758_29.jpg?1579512462'><br><br> ";
+                    var name2 = "<div class = 'name'> Galleria Vittorio Emanuelle II, Milan </div><br>";
+                    var info2 = "<div class = 'info'> The oldest active shopping mall in the country, and it is also a major landmark in the city of Milan. The mall resides in a four-story double arcade, and it got its name from Victor Emmanuel II, who was the very first king of the Kingdom of Italy. It houses a variety of shops selling various items, most notably designer brands. </div><br>";
+
+                    var image3 = "<img class = 'display_img' src = 'https://all-outlets.com/images/outlets/italy/la-reggia/la-reggia-3.jpg'><br><br> ";
+                    var name3 = "<div class = 'name'> La Reggia Designer Outlet, Naples </div><br>";
+                    var info3 = "<div class = 'info'> La Reggia Designer Outlet is a huge and classy shopping mall found in the city of Naples. Its opulence is not limited to the stores it houses but is also evident in its design and construction. It features beautiful lanes and alleys and a magnificently designed open-air shopping area - a feature you won’t find in most malls. </div><br>";
+
+                    var image4 = "<img class = 'display_img' src = 'https://www.klepierre.com/assets/f1200x630-q90/221c621f/header.jpg'><br><br> ";
+                    var name4 = "<div class = 'name'> Shopping Mall Porta di Roma, Rome </div><br>";
+                    var info4 = "<div class = 'info'> Shopping Mall Porta di Roma is reputed as the most modern shopping mall in Europe, and it also ranks highly among the largest shopping malls in the entire country. With hundreds of stores from a variety of leading brands, it is the ultimate mall to shop for any item you want to buy in Italy. </div><br>";
+                    document.getElementById("content").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2 + name3 + info3 + image3 + name4 + info4 + image4;
+                }
+            }
+
+            else if (document.getElementById('france').checked) {                   //if country france is chosen
+                document.getElementById("coun_check").innerHTML = "<strong>FRANCE</strong>";
+
+                var countr = document.getElementById('country').value;
+                var month = document.getElementById('month').value;
+                var link = "<a href = 'https://www.yatra.com/international-flights/flights-to-italy'> this website.</a>"
+                document.getElementById('flight').innerHTML = "So, you live in " + countr + ". It is a beautiful country indeed. For planning your trip to France you can visit " + link + " !"
+
+                if (month.toLowerCase() == "march" || month.toLowerCase() == "april" || month.toLowerCase() == "may") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> spring collection</strong> travellor as France faces temperatures between <strong> 10 - 22°C </strong> in " + month + " and it is <strong>pleasant and breezy</strong> out there. The <strong>Cannes Film Festival in May</strong> plays host to the glitz and glamour of Hollywood, and international names descend on the town for the annual award ceremony."
+                }
+                else if (month.toLowerCase() == "june" || month.toLowerCase() == "july" || month.toLowerCase() == "august") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> summer collection</strong> travellor as France faces temperatures between <strong> 20-28°C </strong> in " + month + " and it is <strong>hot and humid</strong> out there. <strong>Fête de la Musique, held on June 21</strong>, is a free live music festival held in all the large cities across the country. Held on <strong>July 14, Bastille Day</strong> there is celebration across France with fireworks, music and parties."
+                }
+                else if (month.toLowerCase() == "september" || month.toLowerCase() == "october" || month.toLowerCase() == "november" || month.toLowerCase() == "december") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> autumn collection</strong> travellor as France faces temperatures between <strong> 6-22°C </strong> in " + month + " and it is <strong>warm to cold transition </strong> time. <strong>Paris Fashion Week</strong> is held twice a year, in spring and fall, and celebrates the latest styles and trends. Christmas markets pop up across the country, particularly in the capital."
+                }
+                else if (month.toLowerCase() == "january" || month.toLowerCase() == "february") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> winter collection</strong> travellor as France faces temperatures between <strong> 3 - 10°C </strong> in " + month + " and it is <strong>wet and cold</strong> out there. The <strong>Nice Christmas Carnival</strong> is a highlight of the winter calendar, with a procession of floats and parades of musicians and dancers. Paris Fashion Week is held twice a year, in spring and fall, and celebrates the latest styles and trends. "
+                }
+                else {
+                    document.getElementById('season').innerHTML = "You have entered " + month + " which is not a valid month name."
+                }
+
+                if (document.getElementById('monu').checked) {
+                    var type = "Historical Monuments"
+
+                    document.getElementById("type").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://1fmflz2fx4k436sgqe49qldm-wpengine.netdna-ssl.com/wp-content/uploads/2019/03/Mont-Saint-Michel-By-Vicky-SP-shutterstock_208247467-2100x1200.jpg'><br><br> ";
+                    var name = "<div class = 'name'> Mont-Saint-Michel, Brittany </div><br>";
+                    var info = "<div class = 'info'> The church atop Mont-Saint-Michel was built as early as the 8th century, and this was by order of the Archangel Michael himself. Today it has been a major pilgrimage destination for centuries, not to mention a hit with the tourists. It lies in the bay where Brittany and Normandy merge, seemingly free-floating on days of high tide.</div><br>";
+
+                    var image1 = "<img class = 'display_img' src = 'https://www.history.com/.image/ar_4:3%2Cc_fill%2Ccs_srgb%2Cfl_progressive%2Cq_auto:good%2Cw_1200/MTU3ODc3NjU2MjA4ODc2ODcz/this-day-in-history-03311889---eiffel-tower-opens.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> Eiffel Tower, Paris </div><br>";
+                    var info1 = "<div class = 'info'> The most popular monument in all of France is the mighty Eiffel Tower. In fact, it’s one of the most recognisable monuments in the world and most symbolic structures in Europe. Constructed in the year 1889 for the World Fair, it became known as a symbol of French ingenuity. </div><br>";
+
+                    var image2 = "<img class = 'display_img' src = 'https://live.staticflickr.com/1979/31830411148_d2f0977785_b.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> Arles Amphitheatre, Southern France </div><br>";
+                    var info2 = "<div class = 'info'> France’s Roman-era has lent it just as many incredible historic and cultural monuments. Namely, the Amphitheatre of Arles which thrived in its day, around 90 AD; and can be found in the South of France between Languedoc and Provence. </div><br>";
+
+                    var image3 = "<img class = 'display_img' src = 'https://upload.wikimedia.org/wikipedia/commons/1/1b/Front_view_of_the_Arc_de_Triomphe%2C_Paris_23_February_2016.jpg'><br><br> ";
+                    var name3 = "<div class = 'name'> Arc de Triomphe, Place Charles de Gaulle </div><br>";
+                    var info3 = "<div class = 'info'> Sitting smack dab in the centre of Place Charles de Gaulle, or Place de l’Etoile, it’s impossible to miss. Built in 1806 by the orders of Napoleon to honour those who fought for France during the Napoleonic Wars, it’s also a symbol of French pride and resilience. </div><br>";
+
+                    var image4 = "<img class = 'display_img' src = 'https://danielasantosaraujo.com/wp-content/uploads/2020/08/versailles-unesco-featured-image.jpg'><br><br> ";
+                    var name4 = "<div class = 'name'> Palace of Versailles, Versailles </div><br>";
+                    var info4 = "<div class = 'info'> Built in the early 1600s and housing some of France’s most prominent royals like Louis XIII and Marie Antoinette, it’s one of France’s most visited and beloved monuments; and with good reason. Known for its incredibly lavish style and strange quirks such as the hall of 357 mirrors. </div><br>";
+                    document.getElementById("content").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2 + name3 + info3 + image3 + name4 + info4 + image4;
+                }
+                else if (document.getElementById('mus').checked) {
+                    var type = "Museums and Art Galleries"
+                    document.getElementById("type").innerHTML = type;
+
+                    var image = "<img class = 'display_img' src = 'https://media.architecturaldigest.com/photos/5900cc370638dd3b70018b33/16:9/w_2560%2Cc_limit/Secrets%252520of%252520Louvre%2525201.jpg'><br><br> ";
+                    var name = "<div class = 'name'> Musée du Louvre, Paris </div><br>";
+                    var info = "<div class = 'info'> The most famous Parisian museum, located in the former Louvre Palace, Louvre houses collections of all kinds that reflect times and cultures. With its 210,000 m² of exhibition space, this museum is full of art. Most famous of them such as Mona Lisa or Venus de Milo are real Parisian stars. </div><br>";
+
+                    var image1 = "<img class = 'display_img' src = 'https://cdn-imgix-open.headout.com/Orsay/6235-paris-musee-d-orsay-skip-the-line-entry-tickets-01.jpg?auto=compress&w=750&q=75&ar=1%3A1.07&crop=faces'><br><br> ";
+                    var name1 = "<div class = 'name'> Musée d’Orsay, Paris </div><br>";
+                    var info1 = "<div class = 'info'> Displaying eminent artwork of Jean Auguste, Johan Barthold Jongkind, Berthe Morisot and Eugène Carrière etc, this age-old museum is a restored national monument and attracts a plethora of art and history enthusiasts, round the year. Key attractions include Bal du Moulin de la Galette, The Circus, Georges Seurat, Edgar Degas and Auguste Renoir. </div><br>";
+
+                    var image2 = "<img class = 'display_img' src = 'https://www.carrieres-lumieres.com/sites/cdl/files/styles/partenaire_mav/public/kandinskycdl_spiller0299_0.jpg?itok=y3fHjH9R'><br><br> ";
+                    var name2 = "<div class = 'name'> Carrières de Lumières, Les Baux-de-Provence </div><br>";
+                    var info2 = "<div class = 'info'> an exclusive museum in France, where paintings and sculptures are projected and displayed with multi-media effects, coupled with music. There are galleries with works of Picasso, Michelangelo, and Raphael, which are displayed with light and sound, giving them an amazing 3D effect. </div><br>";
+
+                    var image3 = "<img class = 'display_img' src = 'https://www.inexhibit.com/wp-content/uploads/2013/12/Centre-Pompidou-Paris-08-870x580.jpg'><br><br> ";
+                    var name3 = "<div class = 'name'> Centre Pompidou, Paris </div><br>";
+                    var info3 = "<div class = 'info'> Every year, around twenty exhibitions are organized in the museum containing over 70,000 works in its collection. Centre Pompidou has specified areas for children, teenagers, and families. It is also home to a public reference library, a documentary research and information center, and an acoustic/music research and coordination institute. </div><br>";
+
+                    var image4 = "<img class = 'display_img' src = 'https://media-cdn.tripadvisor.com/media/photo-s/12/42/3c/b5/raoul-dufy-la-fee-electricite.jpg'><br><br> ";
+                    var name4 = "<div class = 'name'> Musée d'Art Moderne de Paris, eastern wing of the Palais de Tokyo </div><br>";
+                    var info4 = "<div class = 'info'> Musée d'Art Moderne de Paris or MAM Paris, is a major municipal museum dedicated to modern and contemporary art of the 20th and 21st centuries, including monumental murals by Raoul Dufy and Henri Matisse. </div><br>";
+                    document.getElementById("content").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2 + name3 + info3 + image3 + name4 + info4 + image4;
+                }
+                else if (document.getElementById('mall').checked) {
+                    var type = "Shopping Complexes and Malls"
+                    document.getElementById("type").innerHTML = type;
+
+                    var image = "<img class = 'display_img' src = 'https://frenchmoments.eu/wp-content/uploads/2018/01/BHV-Christmas-Paris-%C2%A9-French-Moments.jpg'><br><br> ";
+                    var name = "<div class = 'name'> Les 4 Temps, Paris </div><br>";
+                    var info = "<div class = 'info'> Situated in the business district of La Défense just outside Paris, the Quatre Temps is France’s most visited shopping mall with 260 stores (including the CNIT section). It is estimated that 45.7 million people visit the mall. ‘Quatre Temps‘ means Four Times and can also refer to the Four Seasons of the year. </div><br>";
+
+                    var image1 = "<img class = 'display_img' src = 'https://www.lsa-conso.fr/mediatheque/9/7/7/000134779_5.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> Printemps Haussmann, Paris </div><br>";
+                    var info1 = "<div class = 'info'> The Printemps Haussmann is a department store (Grand-Magasin) covering an area of 45,000 m2 in 3 buildings dedicated to Fashion (Mode), Man (Homme) and Beauty/Home and Child (Beauté/Maison Enfant). The store is famous for its Art Nouveau architectural style and its Christmas animated windows. </div><br>";
+
+                    var image2 = "<img class = 'display_img' src = 'https://frenchmoments.eu/wp-content/uploads/2018/01/Le-Bon-March%C3%A9-Rive-Gauche-Paris-%C2%A9-French-Moments.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> Le Bon Marché, Paris</div><br>";
+                    var info2 = "<div class = 'info'> This is the world’s oldest department store, founded in 1838 under the name Au Bon Marché. The current building was built in 1869 and was successively enlarged. The Grande Épicerie de Paris offers a wide range of gastronomic produce. </div><br>";
+
+                    var image3 = "<img class = 'display_img' src = 'https://s.inyourpocket.com/gallery/241305.jpg'><br><br> ";
+                    var name3 = "<div class = 'name'> Polygone Riviera, Cannes </div><br>";
+                    var info3 = "<div class = 'info'> Polygone Riviera is a shopping mall that is located in Cagnes-sur-Mer, on Avenue des Alpes. This mall is about 40 minutes drive from Cannes via A8 road. There are over 100 shops here and 26 restaurants. Movie theatres are also placed at the mall so coming here is a full day social outing. </div><br>";
+
+                    var image4 = "<img class = 'display_img' src = 'https://cf.bstatic.com/xdata/images/hotel/max1024x768/212620895.jpg?k=ee3d0f83e917b9b91a0992b682473cf8e247d7ed15bca0cd39af163591fc6e13&o=&hp=1'><br><br> ";
+                    var name4 = "<div class = 'name'>  Italie Deux, Paris </div><br>";
+                    var info4 = "<div class = 'info'> There are jewelry stores, fashion stores, footwear stores, decoration providers, cosmetic boutiques, multimedia stores, culture shops as well as toys and gift shops; but more importantly, the Carrefour Market supermarket is there. </div><br>";
+                    document.getElementById("content").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2 + name3 + info3 + image3 + name4 + info4 + image4;
+                }
+            }
+            else if (document.getElementById('usa').checked) {
+                document.getElementById("coun_check").innerHTML = "<strong>U.S.A.</strong>";
+
+                var countr = document.getElementById('country').value;
+                var month = document.getElementById('month').value;
+                var link = "<a href = 'https://www.yatra.com/international-flights/flights-to-italy'> this website.</a>"
+                document.getElementById('flight').innerHTML = "So, you live in " + countr + ". It is a beautiful country indeed. For planning your trip to United States of America you can visit " + link + " !"
+
+                if (month.toLowerCase() == "march" || month.toLowerCase() == "april" || month.toLowerCase() == "may") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> spring collection</strong> travellor as America faces temperatures between <strong> 5 - 22°C </strong> in " + month + " and it is <strong>pleasant and breezy</strong> out there. Spring is the best time to go to USA if you’re looking to <strong>travel to one of the national parks</strong>, like Yellowstone or the Rockies. As the snow melts, the wildlife comes back out into the open and the lovely warm weather makes it perfect for outdoor activities."
+                }
+                else if (month.toLowerCase() == "june" || month.toLowerCase() == "july" || month.toLowerCase() == "august") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> summer collection</strong> travellor as America faces temperatures between <strong> 18-30°C </strong> in " + month + " and it is <strong>hot and humid</strong> out there. Summer is the best time to travel to USA if you want to attend one of the <strong>several famous festivals</strong> in the country. The <strong>4th of July</strong> celebrations is one of the grandest spectacles in the world. Summer is a good time to visit sites like the <strong>Grand Canyon</strong>."
+                }
+                else if (month.toLowerCase() == "september" || month.toLowerCase() == "october" || month.toLowerCase() == "november") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> autumn collection</strong> travellor as America faces temperatures between <strong> 9-27°C </strong> in " + month + " and it is <strong>warm to cold transition </strong> time. Autumn is the best time to travel to US, as the foliage acquires a reddish hue, and the weather cools down. Tourists reduce in some parts, and stay might be cheaper, but some parts, such as <strong>New England</strong> attract a lot of visitors during this time."
+                }
+                else if (month.toLowerCase() == "december" || month.toLowerCase() == "january" || month.toLowerCase() == "february") {
+                    document.getElementById('season').innerHTML = "Grab your <strong> winter collection</strong> travellor as America faces temperatures between <strong> 1 - 10°C </strong> in " + month + " and it is <strong>wet and cold</strong> out there. The northern half of the country is cold during these winter months, with temperatures dropping below freezing. But this is the best time to visit US, if you’re looking to <strong>travel to the southern states</strong> or for indoor activities in the cities."
+                }
+                else {
+                    document.getElementById('season').innerHTML = "You have entered " + month + " which is not a valid month name."
+                }
+
+                if (document.getElementById('monu').checked) {
+                    var type = "Historical Monuments"
+
+                    document.getElementById("type").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://myfamilytravels.com/content/uploads/2019/06/liberty-5d19448369c3c.jpg'><br><br> ";
+                    var name = "<div class = 'name'> Statue Of Liberty, New York </div><br>";
+                    var info = "<div class = 'info'>The Statue of Liberty, an official National Monument, was erected in 1886 to commemorate the end of the U.S. Civil War and the abolition of slavery.  (Broken shackles lie at the statue's feet.) But to millions of immigrants arriving in the U.S. near the turn of the 20th century, the statue also stood for hope and new beginnings in America.</div><br>";
+
+                    var image1 = "<img class = 'display_img' src = 'https://www.tripsavvy.com/thmb/-1Eqos4-5bAV16a2dvk_wxM015s=/4184x2353/smart/filters:no_upscale()/gateway-to-the-west-561452183-5975330db501e800117858c8.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> Gateway Arch, St. Louis </div><br>";
+                    var info1 = "<div class = 'info'> St. Louis' legendary arch, which stands at the Gateway to the West, soars 630 feet above a parkâthe monument is taller than the Washington Monument and the Statue of Libertyâat the Jefferson National Expansion Memorial park. Visitors take a tram to the top of the arch, where visitors can see as far as 30 miles on a clear day, and get a bird's-eye glimpse of the Mississippi River and the St. Louis area. </div><br>";
+
+                    var image2 = "<img class = 'display_img' src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Mount_Rushmore_detail_view_%28100MP%29.jpg/1200px-Mount_Rushmore_detail_view_%28100MP%29.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> Mount Rushmore, South Dakota </div><br>";
+                    var info2 = "<div class = 'info'> Three million people head to the Black Hills of South Dakota annually to peer at the massive mugs of George Washington, Thomas Jefferson, Abraham Lincoln, and Theodore Roosevelt. It took 14 years for 400 workers to carve the faces, which are about 60 feet tall, into granite. </div><br>";
+
+                    var image3 = "<img class = 'display_img' src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GoldenGateBridge-001.jpg/1200px-GoldenGateBridge-001.jpg'><br><br> ";
+                    var name3 = "<div class = 'name'> Golden Gate Bridge, San Francisco </div><br>";
+                    var info3 = "<div class = 'info'> It's one part functional roadway, one part beautiful, iconic sculpture. The orange art-deco suspension bridge had the longest span in the world when it was completed in 1937. Although the bridge is no longer the world's lengthiest, it still stands as a monument to American innovation. </div><br>";
+
+                    var image4 = "<img class = 'display_img' src = 'https://www.tripsavvy.com/thmb/jfXdjodW0zWD78bZosmWLZFGrk4=/1885x1414/smart/filters:no_upscale()/Wash-mon-57990b3e3df78c3276b8ec3e.jpg'><br><br> ";
+                    var name4 = "<div class = 'name'> Washington Monument, Washington D.C. </div><br>";
+                    var info4 = "<div class = 'info'> The Washington Monument is an obelisk within the National Mall in Washington, D.C., built to commemorate George Washington, once commander-in-chief of the Continental Army (1775–1784) in the American Revolutionary War and the first President of the United States. The monument, made of marble, granite, and bluestone gneiss, is both the world's tallest predominantly stone structure and the world's tallest obelisk. </div><br>";
+                    document.getElementById("content").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2 + name3 + info3 + image3 + name4 + info4 + image4;
+                }
+                else if (document.getElementById('mus').checked) {
+                    var type = "Museums and Art Galleries"
+                    document.getElementById("type").innerHTML = type;
+
+                    var image = "<img class = 'display_img' src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Metropolitan_Museum_of_Art_%28The_Met%29_-_Central_Park%2C_NYC.jpg/1200px-Metropolitan_Museum_of_Art_%28The_Met%29_-_Central_Park%2C_NYC.jpg'><br><br> ";
+                    var name = "<div class = 'name'> The Metropolitan Museum of Art, New York City </div><br>";
+                    var info = "<div class = 'info'> The Met is one of the most-visited museums in the world, and the largest in the Western Hemisphere with its permanent collection featuring more than two million works, which span the globe from antiquity to today, and are all housed in a massive, Gothic-style building. Favourites with museum visitors include a seven-ton Sphinx of Hatshepsut and Italian painter Caravaggio’s The Musicians. </div><br>";
+
+                    var image1 = "<img class = 'display_img' src = 'https://www.terraamericanart.org/wp-content/uploads/2015/08/AIC-Facade-North-View-1024x666.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> The Art Institute of Chicago, Chicago </div><br>";
+                    var info1 = "<div class = 'info'> The one-million-square-foot Art Institute of Chicago features more than 300,000 works of art and artefacts from around the world, in every era from antiquity to today. The most famous works include The Bedroom by Vincent Van Gogh, American Gothic by Grant Wood, The Old Guitarist by Pablo Picasso, Nighthawks by Edward Hopper and A Sunday Afternoon on the Island of La Grande Jatte by Georges Seurat. </div><br>";
+
+                    var image2 = "<img class = 'display_img' src = 'https://upload.wikimedia.org/wikipedia/commons/0/03/Aerial_Getty_Museum.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> J. Paul Getty Museum, Los Angeles </div><br>";
+                    var info2 = "<div class = 'info'> The Getty Center, which opened in 1997, is best-known for its architecture, gardens and views. It hosts pre-20th-century European paintings, decorative arts, illuminated manuscripts, drawings and sculpture, along with 19th- and 20th-century American, Asian, and European photographs. The Villa, opened in 2006, houses an extensive collection of Greek and Roman art, and is modelled after a seaside Roman villa. </div><br>";
+
+                    var image3 = "<img class = 'display_img' src = 'https://media.tacdn.com/media/attractions-splice-spp-674x446/07/03/65/f4.jpg'><br><br> ";
+                    var name3 = "<div class = 'name'> American Museum of Natural History, New York City </div><br>";
+                    var info3 = "<div class = 'info'> A museum complex with 28 interconnected buildings that house 45 permanent exhibition halls as well as a library and planetarium. The collections within AMNH feature more than 33 million plant, animal, fossil, mineral, rock, meteorite and human remains specimens, along with human cultural artifacts spread through over 190,000 square meters of space. </div><br>";
+
+                    var image4 = "<img class = 'display_img' src = 'https://cdn.britannica.com/60/124960-050-A1AF22BC/National-Gallery-of-Art-Washington-DC.jpg'><br><br> ";
+                    var name4 = "<div class = 'name'> National Gallery of Art, Washington, D.C. </div><br>";
+                    var info4 = "<div class = 'info'> This place includes more than 140,000 paintings, prints, drawings, photographs, decorative arts, sculpture, and new media, tracing the development of Western art from the Middle Ages through today. The French Impressionist paintings have been the most popular for years, including a 1905 oil painting by Pablo Picasso’s longtime rival, Henri Matisse, The Open Window, and four Claude Monet masterpieces. </div><br>";
+                    document.getElementById("content").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2 + name3 + info3 + image3 + name4 + info4 + image4;
+                }
+                else if (document.getElementById('mall').checked) {
+                    var type = "Shopping Complexes and Malls"
+                    document.getElementById("type").innerHTML = type;
+
+                    var image = "<img class = 'display_img' src = 'https://www.wealthmanagement.com/sites/wealthmanagement.com/files/mallofamerica.jpg'><br><br> ";
+                    var name = "<div class = 'name'> Mall of America, Bloomington, Minnesota </div><br>";
+                    var info = "<div class = 'info'> Mall of America located in Bloomington, Minnesota is one of the largest and most visited shopping malls in the United States. With 520 stores, 50 restaurants and attractions including Nickelodeon Universe, the nation's largest indoor theme park, and the new American Girl store the options are unlimited in Mall of America. </div><br>";
+
+                    var image1 = "<img class = 'display_img' src = ' https://media-cdn.tripadvisor.com/media/photo-s/04/86/07/e6/king-of-prussia-mall.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> King of Prussia Mall, King of Prussia, Pennsylvania </div><br>";
+                    var info1 = "<div class = 'info'> This is the largest shopping mall on the East Coast featuring over 400 stores, including Nordstrom, Neiman Marcus, Bloomingdale's, Macy's, and Lord & Taylor. A wide selection of international dining options are available at three food courts and in casual sit-down restaurants including Cheesecake Factory, Maggiano's Little Italy, Seasons 52, and Legal Sea Foods, and more. </div><br>";
+
+                    var image2 = "<img class = 'display_img' src = 'https://wwd.com/wp-content/uploads/2017/03/kmj_90951.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> South Coast Plaza, Costa Mesa, California </div><br>";
+                    var info2 = "<div class = 'info'> South Coast Plaza is the most lucrative shopping mall in Costa Mesa, California in Orange County. The mall boasts over 250 internationally recognized retail shops including Macy's, Sears, Nordstrom, Bloomingdales, and Saks Fifth Avenue. </div><br>";
+
+                    var image3 = "<img class = 'display_img' src = 'https://media.tacdn.com/media/attractions-splice-spp-674x446/0b/39/78/1b.jpg'><br><br> ";
+                    var name3 = "<div class = 'name'> Aventura Mall, Aventura, Florida </div><br>";
+                    var info3 = "<div class = 'info'> Opened in 1983, the Aventura Mall is the fifth largest high-end shopping mall in Aventura, Florida. The three floor mall contains more than 300 retail shops, 18 fast food eateries, and other restaurants. Spanning 2.7 million square feet, Aventura Mall is the perfect shopping destination. </div><br>";
+
+                    var image4 = "<img class = 'display_img' src = 'https://thebuzzmagazines.com/sites/default/files/events/2018/08/galleria%20tree%20lighting%202017%20resized.jpg'><br><br> ";
+                    var name4 = "<div class = 'name'>  The Galleria, Houston, Texas </div><br>";
+                    var info4 = "<div class = 'info'> The mall consists over 400 shops and restaurants, two high rise hotels, and three office buildings. The shopping opportunities are unlimited at world class stores - Neiman Marcus, two Macy's, Saks Fifth Avenue, and Nordstrom. </div><br>";
+                    document.getElementById("content").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2 + name3 + info3 + image3 + name4 + info4 + image4;
+                }
+            }
+
+            if (document.getElementById('italy').checked) {
+                if (document.getElementById('itl').checked) {           // italian cuisine is chosen
+                    var type = "Italian cuisine"
+
+                    document.getElementById("type1").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://media-cdn.tripadvisor.com/media/photo-s/14/1d/a9/7e/the-gritti-terrace.jpg' ><br><br> ";
+                    var name = "<div class = 'name'> Club Del Doge Restaurant, Venice </div><br>";
+                    var info = "<div class='info'><strong> Location</strong> : Campo Santa Maria del Giglio, 2467 c/o The Gritti Palace, 30124 Venice Italy </div><br>"
+
+                    var image1 = "<img class = 'display_img' src = 'https://gbc-cdn-public-media.azureedge.net/img44114.1426x713.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> Da Vittorio, Brusaporto </div><br>";
+                    var info1 = "<div class='info'> <strong> Location</strong> : Via Cantalupa, 17, 24060 Brusaporto BG, Italy </div><br>"
+
+                    var image2 = "<img class = 'display_img' src = 'https://i.pinimg.com/originals/f5/fe/be/f5febe2afcf922eaf1d116d2d33cd787.png'><br><br> ";
+                    var name2 = "<div class = 'name'> Ristorante La Sponda, Positano </div><br>";
+                    var info2 = "<div class='info'> <strong> Location</strong> : Via Cristoforo Colombo, 30, 84017 Positano SA, Italy </div><br>"
+
+                    document.getElementById("food").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2;
+                }
+                else if (document.getElementById('frnc').checked) {     // french cuisine is chosen
+                    var type = "French cuisine"
+
+                    document.getElementById("type1").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://www.touringclub.it/sites/default/files/styles/adaptive/public/r_milano_maisonbretonne_3.jpg?itok=92R8cy4H' ><br><br> ";
+                    var name = "<div class = 'name'> Maison Bretonne, Milan </div><br>";
+                    var info = "<div class='info'><strong> Location</strong> : Via Giulio Cesare Procaccini 69, 20154 Milan Italy </div><br>"
+
+                    var image1 = "<img class = 'display_img' src = 'https://www.florencelocationgroup.com/wp-content/uploads/2020/03/francia-firenze-scaled.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> La Taverna di Le Cirque, Florence </div><br>";
+                    var info1 = "<div class='info'> <strong> Location</strong> : Via Mario Morosi 11, 50127, Florence, Italy </div><br>"
+
+                    var image2 = "<img class = 'display_img' src = 'https://media-cdn.tripadvisor.com/media/photo-s/0e/65/e0/53/le-carre-francais-ristorante.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> Le Carré Français, Rome </div><br>";
+                    var info2 = "<div class='info'> <strong> Location</strong> : Via Vittoria Colonna 30 00193, Rome, Italy </div><br>"
+
+                    document.getElementById("food").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2;
+                }
+                else if (document.getElementById('amer').checked) {     // american cuisine is chosen
+                    var type = "American cuisine"
+
+                    document.getElementById("type1").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://images.squarespace-cdn.com/content/59b01095be42d610798454b4/1506200169588-CJIN0RB2RS51GPQ827KP/IMG_9717.jpg?content-type=image%2Fjpeg' ><br><br> ";
+                    var name = "<div class = 'name'> Homebaked, Rome </div><br>";
+                    var info = "<div class='info'><strong> Location</strong> : Via Fratelli Bonnet 21 00152, Rome, Italy </div><br>"
+
+                    var image1 = "<img class = 'display_img' src = 'https://180grammi-burgers-beers.com/wp-content/uploads/2019/03/menu-hero-1024x640.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> 180 Grammi Burgers & Beers, Florence </div><br>";
+                    var info1 = "<div class='info'> <strong> Location</strong> : Via Pietrapiana 11R Via Pietrapiana 11/ R, 50121, Florence, Italy </div><br>"
+
+                    var image2 = "<img class = 'display_img' src = 'https://10619-2.s.cdn12.com/rests/original/506_504649089.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> Corey's Soul Chicken, Milan </div><br>";
+                    var info2 = "<div class='info'> <strong> Location</strong> : Via Paolo Sarpi 53 20154, Milan, Italy </div><br>"
+
+                    document.getElementById("food").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2;
+                }
+            }
+
+            else if (document.getElementById('france').checked) {
+                if (document.getElementById('itl').checked) {
+                    var type = "Italian cuisine"
+
+                    document.getElementById("type1").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://uploads.lebonbon.fr/source/2019/paris/fevrier/mel/mulberry_street/Mulberry_Bar.jpg' ><br><br> ";
+                    var name = "<div class = 'name'> Mulberry Street, Paris </div><br>";
+                    var info = "<div class='info'><strong> Location</strong> : 20 rue de la Huchette, 75005 Paris, France </div><br>"
+
+                    var image1 = "<img class = 'display_img' src = 'https://fr.newtable.com/uploads/medias/restaurants/images/large/3506-photo1.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> Via Emilia, Paris </div><br>";
+                    var info1 = "<div class='info'> <strong> Location</strong> : 22 rue la Bruyere 22 rue la Bruyère, 75009 Paris, France </div><br>"
+
+                    var image2 = "<img class = 'display_img' src = 'https://www.lecafebruncannes.fr/wp-content/uploads/2020/01/cafebrun01.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> Cafe Brun, Cannes </div><br>";
+                    var info2 = "<div class='info'> <strong> Location</strong> : 11 rue Rouguiere, 06400 Cannes, France </div><br>"
+
+                    document.getElementById("food").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2;
+                }
+                else if (document.getElementById('frnc').checked) {
+                    var type = "French cuisine"
+
+                    document.getElementById("type1").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://urbanologie.com/media_cache/inner_slider/media/0000_Bistrot_Paul_Bert_1.jpg' ><br><br> ";
+                    var name = "<div class = 'name'> Bistrot Paul Bert, Paris </div><br>";
+                    var info = "<div class='info'><strong> Location</strong> : Bistrot Paul Bert, 22 Rue Paul Bert, 75011 Paris, France </div><br>"
+
+                    var image1 = "<img class = 'display_img' src = 'https://www.solosophie.com/wp-content/uploads/2020/02/septime-paris-restaurant-interior-1024x683.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> Septime, Paris </div><br>";
+                    var info1 = "<div class='info'> <strong> Location</strong> : 1 rue Rouguiere, 06400 Cannes, France </div><br>"
+
+                    var image2 = "<img class = 'display_img' src = 'https://media-cdn.tripadvisor.com/media/photo-s/0e/a7/c7/7f/photo9jpg.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> BLISSS, Bordeaux </div><br>";
+                    var info2 = "<div class='info'> <strong> Location</strong> : 98 avenue de Magudas, 33700 Merignac, Bordeaux, France </div><br>"
+
+                    document.getElementById("food").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2;
+                }
+                else if (document.getElementById('amer').checked) {
+                    var type = "American cuisine"               //??
+
+                    document.getElementById("type1").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://media-cdn.tripadvisor.com/media/photo-s/0d/28/3d/92/espace-privatisable-au.jpg' ><br><br> ";
+                    var name = "<div class = 'name'> The Frog & Underground, Paris </div><br>";
+                    var info = "<div class='info'><strong> Location</strong> : 176 rue Montmartre 75002 Paris, France </div><br>"
+
+                    var image1 = "<img class = 'display_img' src = 'https://media-cdn.tripadvisor.com/media/photo-s/1a/ee/05/11/main-dining-area.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> Rosie's Smokehouse, Paris </div><br>";
+                    var info1 = "<div class='info'> <strong> Location</strong> : 13 rue de la Huchette 75005 Paris, France </div><br>"
+
+                    var image2 = "<img class = 'display_img' src = 'https://www.leddydine.fr/wp-content/uploads/2014/01/IMG_2410.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> West Coast Gourmet Burgers, Bordeaux </div><br>";
+                    var info2 = "<div class='info'> <strong> Location</strong> : 31 rue du Cancera, 33000, Bordeaux, France </div><br>"
+
+                    document.getElementById("food").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2;
+                }
+            }
+
+
+            else if (document.getElementById('usa').checked) {
+                if (document.getElementById('itl').checked) {
+                    var type = "Italian cuisine"
+
+                    document.getElementById("type1").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://pyxis.nymag.com/v1/imgs/c4e/b7b/8ea517722fe19da71390a8a73d0aabc4a7-babbo-01.jpg' ><br><br> ";
+                    var name = "<div class = 'name'> Babbo, New York City </div><br>";
+                    var info = "<div class='info'><strong> Location</strong> : 110 Waverly Pl, New York, NY 10011, United States </div><br>"
+
+                    var image1 = "<img class = 'display_img' src = 'https://www.theworlds50best.com/discovery/filestore/jpg/OsteriaMozza-LosAngeles-USA-03.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> Osteria Mozza, Los Angeles </div><br>";
+                    var info1 = "<div class='info'> <strong> Location</strong> : 6602 Melrose Ave, Los Angeles, CA 90038, United States </div><br>"
+
+                    var image2 = "<img class = 'display_img' src = 'https://speisekarte.menu/storage/media/company_images/1442775/vetri-interior-1-cropped0-1543642905.jpg'><br><br> ";
+                    var name2 = "<div class = 'name'> Vetri, Philadelphia </div><br>";
+                    var info2 = "<div class='info'> <strong> Location</strong> : 1312 Spruce St, Philadelphia, PA 19107, United States </div><br>"
+
+                    document.getElementById("food").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2;
+                }
+                else if (document.getElementById('frnc').checked) {
+                    var type = "French cuisine"
+
+                    document.getElementById("type1").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://i.pinimg.com/originals/bf/49/09/bf49092cc25b040f37f3932376939075.jpg' ><br><br> ";
+                    var name = "<div class = 'name'> Bouley, New York City </div><br>";
+                    var info = "<div class='info'><strong> Location</strong> : 31 W 21st St, New York, NY 10010, United States </div><br>"
+
+                    var image1 = "<img class = 'display_img' src = 'https://images.squarespace-cdn.com/content/v1/5cd967e14bbf8600019ba178/1559139008218-IUXIH9KLPYBXDZ6DVUW4/ke17ZwdGBToddI8pDm48kG87Sfbgg29A4BYEDq3OXvgUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcf4OxbJOyh_wHUnyc4kQLQ6SBshRGOku7c30Y_IRDNPta8R2IY5BHMaEj1zOWoDTZ/CafeProvence-the+shops+of+prairie+village.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> Cafe Province, Prairie Village, Kansas </div><br>";
+                    var info1 = "<div class='info'> <strong> Location</strong> : 3936 W 69th Terrace, Prairie Village, KS 66208, United States </div><br>"
+
+                    var image2 = "<img class = 'display_img' src = 'https://img.washingtonpost.com/rf/image_1484w/2010-2019/WashingtonPost/2019/09/26/Production/Magazine/Images/LeDiplomate_Interior_003.jpg?uuid=QOM7YMtrEemh_spG6NVzwA'><br><br> ";
+                    var name2 = "<div class = 'name'> Le Diplomate, Washington D.C. </div><br>";
+                    var info2 = "<div class='info'> <strong> Location</strong> : 1601 14th St NW, Washington, DC 20009, United States </div><br>"
+
+                    document.getElementById("food").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2;
+                }
+                else if (document.getElementById('amer').checked) {
+                    var type = "American cuisine"
+
+                    document.getElementById("type1").innerHTML = type;
+                    var image = "<img class = 'display_img' src = 'https://pyxis.nymag.com/v1/imgs/3c6/112/8d0e3a03db6cbd7f63b559c42663254d0e-blue-hill-at-stone-barns-01.rsquare.w1200.jpg' ><br><br> ";
+                    var name = "<div class = 'name'> Blue Hill at Stone Barns, Tarrytown, NY </div><br>";
+                    var info = "<div class='info'><strong> Location</strong> : 630 Bedford Rd, Tarrytown, NY 10591, United States </div><br>"
+
+                    var image1 = "<img class = 'display_img' src = 'https://cdn.vox-cdn.com/thumbor/BPmcyBvb_xac-aEqEU97v3GhZDk=/1400x788/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/3374508/church_key.0.jpg'><br><br> ";
+                    var name1 = "<div class = 'name'> The Church Key, West Hollywood, CA </div><br>";
+                    var info1 = "<div class='info'> <strong> Location</strong> : 8730 Sunset Blvd, West Hollywood, CA 90069, United States </div><br>"
+
+                    var image2 = "<img class = 'display_img' src = 'https://visitdallas-sv.imgix.net/crm/dallas/The-Sendero0_5ede04ff-5056-b3a8-49dfbcec1c983db0.jpg?w=800&h=600&fit=fill&crop=edges,faces&q=75&fm=pjpg&dpr=3&auto=compress,format,redeye&trim=auto'><br><br> ";
+                    var name2 = "<div class = 'name'> Fearing's, Dallas, TX </div><br>";
+                    var info2 = "<div class='info'> <strong> Location</strong> : 2121 McKinney Ave, Dallas, Texas 75201, United States </div><br>"
+
+                    document.getElementById("food").innerHTML = name + info + image + name1 + info1 + image1 + name2 + info2 + image2;
+                }
+            }
+        }
+    </script>
+
+    <h1 style="font-size: 400%;font-family:inherit ; text-align:center;background-color: lightseagreen;">
+        <!--Topmost heading styling-->
+        to TRAVEL is to LIVE !!!
+    </h1>
+
+    <h2 style="font-size: 200%;font-family:serif ; text-align:center; background-color:paleturquoise; opacity: 55%;">
+        <!--Description of the website and it's purpose-->
+        <div class="textbox"></div>
+        Passionate about travelling ? Here I bring to you the world's most beautiful and visited countries : Italy,
+        France, U.S.A !
+        So, gear up pal as we plan your next vacation in these countries with your favourite places to visit, favourite
+        cuisine to eat and celebs you wish to see.
+        Fill up your personal information and choices and virtually enjoy your upcoming trip!
+    </h2>
+    <h2 style="font-size: 300%;font-family:serif ; text-align:center;">
+        <!--Heading for filling in the personal details-->
+        Fill in your personal details
+    </h2>
+    <form action="#">
+        <!--Form begins here-->
+        <table style="font-size: 200%;text-align:center; margin-left: auto; margin-right: auto;">
+            <tr>
+                <td style="color:rgb(9, 9, 138)"><strong>What is your Name ? </strong></td>
+                <!--name field of the form-->
+                <td><input type="text" id="fn" onblur="check1()"></td>
+                <td><span id="temp"></span></td>
+            </tr>
+            <tr>
+                <td style="color:rgb(9, 9, 138)"><strong>When were you born ? </strong></td>
+                <!--date field of the form-->
+                <td><input type="date" id="date"></td>
+                <td><span id="temp1"></span></td>
+            </tr>
+            <tr>
+                <td style="color:rgb(9, 9, 138)"><strong> Which country do you live in ? </strong></td>
+                <!--country you live in-->
+                <td><input type="text" id="country" onblur="check2()"></td>
+                <td><span id="temp2"></span></td>
+            </tr>
+            <tr>
+                <td style="color:rgb(9, 9, 138)"><strong>Which month are you planning the vacation ? </strong></td>
+                <!--when do you want to plan your trip-->
+                <td><input type="text" id="month" onblur="check3()"></td>
+                <td><span id="temp3"></span></td>
+            </tr>
+        </table>
+        <h2 style="font-size: 300%;font-family:serif ; text-align:center; ;">
+            Let's plan your trip to your next dream destination </h2>
+        <table style="font-size: 200%; margin-left: auto; margin-right: auto; text-align: center;">
+            <tr>
+                <td style="color:rgb(9, 9, 138)"><strong>Which country do you want to visit ?</strong> </td>
+                <!--choices of countries for your vacation-->
+                <td><input name="inp" type="radio" id="italy" value="italy"><strong>Italy</strong></strong></td>
+                <td><input name="inp" type="radio" id="france" value="france"><strong>France</strong></td>
+                <td><input name="inp" type="radio" id="usa" value="usa"><strong>USA</strong>
+                </td>
+                <td><span id="temp4"></span></td>
+            </tr>
+            <tr>
+                <!--choices of kind of places to visit for your vacation-->
+                <td style="color:rgb(9, 9, 138)"><strong>Where do you want to go ?</strong></td>
+                <td><input name="inp1" type="radio" id="monu" value="monu">Historical Monuments</td>
+                <td><input name="inp1" type="radio" id="mus" value="mus">Museums & Art Galleries</td>
+                <td><input name="inp1" type="radio" id="mall" value="mall">Shopping Complexes & Malls
+                </td>
+                <td><span id="temp5"></span></td>
+            </tr>
+            <tr>
+                <!--choices of cuisines and restaurants to try on your vacation-->
+                <td style="color:rgb(9, 9, 138)"><strong>What do you like to eat ?</strong></td>
+                <td><input name="inp2" type="radio" id="itl" value="itl">Italian</td>
+                <td><input name="inp2" type="radio" id="frnc" value="frnc">French</td>
+                <td><input name="inp2" type="radio" id="amer" value="amer">American
+                </td>
+                <td><span id="temp6"></span></td>
+            </tr>
+        </table>
+    </form>
+    <button
+        style="text-align: center; display: block; margin: auto; font-size: 400%; color:floralwhite; background-color:lightseagreen; font-family:'Courier New', Courier, monospace;"
+        onclick='validate()'>START </button>
+    <!--for recording the information filled in-->
+    <br><br><br>
+    <div id="intropara" class="intro"></div><br><br>
+    <!--gives the introduction paragraph with your name-->
+    <span id="coun_check"
+        style="color:rgb(82, 18, 18); font-size: 500%; background-color: rgb(247, 228, 199); text-align: center; margin-left: 42%; border: rgb(82, 18, 18); border-style: double; border-width: 5px;">
+    </span>
+    <!--checks the country you have chosen-->
+    <br><br>
+    <div id="flight" class="flight"></div><br><br>
+    <!--link to the site styling-->
+    <div id="season" class="season"></div><br><br>
+    <!--seasonal data regarding temperature, important highlights and tips etc.-->
+    <div id="type"
+        style="color:rgb(82, 18, 18) ;font-family:fantasy ;font-weight: bold ; font-size: 350%; text-align: center;">
+    </div>
+    <!--Which type of places you want to visit-->
+
+    <div id="content"></div>
+    <!--display all content according to your choices-->
+    <br><br>
+    <div id="type1"
+        style="color:rgb(82, 18, 18) ;font-family:fantasy ;font-weight: bold ; font-size: 350%; text-align: center;">
+    </div>
+    <!--displays cuisine you chose-->
+
+    <div id="food"></div>
+    <!--display all restaurants according to your choice-->
+    <br><br>
+</body>
+
+</html>
